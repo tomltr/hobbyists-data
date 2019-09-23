@@ -2,7 +2,8 @@ package com.entity;
 
 
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,11 +40,13 @@ public class Hobbyist
 	private String hasPet;
 	
 	@Column(name="joined_date")
-	private Date joinedDate;
+	private String joinedDate;
 	
 	public Hobbyist()
 	{
-		
+		Date today = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        this.joinedDate = formatter.format(today);
 	}
 
 	public int getId() {
@@ -102,11 +105,11 @@ public class Hobbyist
 		this.hasPet = hasPet;
 	}
 
-	public Date getJoinedDate() {
+	public String getJoinedDate() {
 		return joinedDate;
 	}
 
-	public void setJoinedDate(Date joinedDate) {
+	public void setJoinedDate(String joinedDate) {
 		this.joinedDate = joinedDate;
 	}
 	
