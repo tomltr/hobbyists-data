@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import javax.transaction.Transactional;
 
 import com.entity.Hobbyist;
 
@@ -32,6 +31,18 @@ public class HobbyistDAOImpl implements HobbyistDAO
 		// return the results
 		
 		return hobbyists;
+	}
+
+	@Override
+	public void createHobbyist(Hobbyist newHobbyist) 
+	{
+		
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// save new hobbyist
+		currentSession.save(newHobbyist);
+		
 	}
 
 }
