@@ -21,8 +21,15 @@ public class HobbyistServiceImpl implements HobbyistService
 	@Transactional
 	public List<Hobbyist> getHobbyists() 
 	{
-		
 		return hobbyistDAO.getHobbyists();
+	}
+
+	@Override
+	@Transactional
+	public void createHobbyist(Hobbyist newHobbyist) 
+	{
+		hobbyistDAO.createHobbyist(newHobbyist);
+		
 	}
 
 }
