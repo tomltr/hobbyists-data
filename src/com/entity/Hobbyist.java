@@ -45,8 +45,8 @@ public class Hobbyist
 	public Hobbyist()
 	{
 		Date today = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        this.joinedDate = formatter.format(today);
+        	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        	this.joinedDate = formatter.format(today);
 	}
 
 	public int getId() {
