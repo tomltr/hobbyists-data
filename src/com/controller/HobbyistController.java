@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.entity.Hobbyist;
 import com.service.HobbyistService;
@@ -43,11 +44,34 @@ public class HobbyistController
 		return "hobbyist-form";
 	}
 	
-	@PostMapping("/createNewHobbyist")
-	public String createNewHobbyist(@ModelAttribute("hobbyist") Hobbyist newHobbyist)
+	@PostMapping("/saveHobbyist")
+	public String saveHobbyist(@ModelAttribute("hobbyist") Hobbyist newHobbyist)
 	{
-		hobbyistService.createHobbyist(newHobbyist);
+		hobbyistService.saveHobbyist(newHobbyist);
 		
 		return "redirect:/hobbyist/list";
+	}
+	
+	@GetMapping("/updateForm")
+	public String updateHobbyist(@RequestParam("hobbyistId") int id, Model model)
+	{
+		// get the hobbyist from our service
+		Hobbyist hobbyist = hobbyistService.getHobbyist(id);
+		
+		// set hobbyist as a model attribute 
+		model.addAttribute("hobbyist", hobbyist);
+		
+		// send the attribute info to populate form
+		
+		return "hobbyist-form";
+	}
+	
+	@GetMapping("/remove")
+	public String removeHobbyist(@RequestParam("hobbyistId") int id)
+	{
+		hobbyistService.removeHobbyist(id);
+		
+		return "redirect:/hobbyist/list";
+		
 	}
 }
