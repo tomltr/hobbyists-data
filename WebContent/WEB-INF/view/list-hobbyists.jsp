@@ -18,6 +18,13 @@
 		<div id="container">
 		
 			<div id="content">
+			
+				<!--  New Hobbyist Button -->
+				<input type="button" value="New Hobbyist" 
+						onclick="window.location.href='addForm'; return false;"
+						class="add-button"
+				/>
+			
 				<!--  add out html table here -->
 				<table>
 					<tr>
@@ -28,11 +35,24 @@
 						<th>Url </th>
 						<th>Has Pet </th>
 						<th>Joined Date </th>
+						
 					</tr>
 					
 					<!--  loop over each hobbyists -->
 					
 					<c:forEach var="tempHobbyist" items="${hobbyists}">
+					
+						<!--  update link with hobbyist id -->
+						<c:url var="updateLink" value="/hobbyist/updateForm">
+							<c:param name="hobbyistId" value="${tempHobbyist.id}"/>
+						
+						</c:url>
+						
+						<c:url var="removeLink" value="/hobbyist/remove">
+							<c:param name="hobbyistId" value="${tempHobbyist.id}"/>
+						
+						</c:url>
+						
 						<tr>
 							<td> ${tempHobbyist.name}</td>
 							<td> ${tempHobbyist.email}</td>
@@ -41,6 +61,14 @@
 							<td> ${tempHobbyist.url}</td>
 							<td> ${tempHobbyist.hasPet}</td>
 							<td> ${tempHobbyist.joinedDate}</td>
+							<td>
+								<a href="${updateLink}">Update</a> |
+								<a href="${removeLink}"
+									onclick="if(!(confirm('Remove the hobbyist?'))) return false">Remove
+								</a>
+								
+									
+							</td>
 						</tr>
 					</c:forEach>
 
