@@ -8,5 +8,9 @@ public interface HobbyistDAO
 {
 	public List<Hobbyist> getHobbyists();
 
-	public void createHobbyist(Hobbyist newHobbyist);
+	public void saveHobbyist(Hobbyist newHobbyist);
+
+	public Hobbyist getHobbyist(int id);
+	
+	public void removeHobbyist(int id);
 }

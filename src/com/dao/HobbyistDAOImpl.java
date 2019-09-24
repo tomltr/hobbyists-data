@@ -23,7 +23,7 @@ public class HobbyistDAOImpl implements HobbyistDAO
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// create a query
-		Query<Hobbyist> theQuery = currentSession.createQuery("from Hobbyist", Hobbyist.class);
+		Query<Hobbyist> theQuery = currentSession.createQuery("FROM Hobbyist", Hobbyist.class);
 		
 		// execute query and get result list
 		List<Hobbyist> hobbyists = theQuery.getResultList();
@@ -34,15 +34,42 @@ public class HobbyistDAOImpl implements HobbyistDAO
 	}
 
 	@Override
-	public void createHobbyist(Hobbyist newHobbyist) 
+	public void saveHobbyist(Hobbyist newHobbyist) 
 	{
 		
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// save new hobbyist
-		currentSession.save(newHobbyist);
+		currentSession.saveOrUpdate(newHobbyist);
 		
+	}
+
+	@Override
+	public Hobbyist getHobbyist(int id) 
+	{
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		
+		// now retrieve/read from database using the primary key
+		Hobbyist hobbyist = currentSession.get(Hobbyist.class, id);
+		
+		return hobbyist;
+	}
+	
+	@Override
+	public void removeHobbyist(int id)
+	{
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// delete a hobbyist with the same id
+		Query theQuery = currentSession.createQuery("DELETE FROM Hobbyist WHERE id=:hobbyistId");
+		theQuery.setParameter("hobbyistId", id);
+		
+		theQuery.executeUpdate();
+	
 	}
 
 }
