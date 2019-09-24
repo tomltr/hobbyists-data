@@ -26,10 +26,25 @@ public class HobbyistServiceImpl implements HobbyistService
 
 	@Override
 	@Transactional
-	public void createHobbyist(Hobbyist newHobbyist) 
+	public void saveHobbyist(Hobbyist newHobbyist) 
 	{
-		hobbyistDAO.createHobbyist(newHobbyist);
+		hobbyistDAO.saveHobbyist(newHobbyist);
 		
+	}
+
+	@Override
+	@Transactional
+	public Hobbyist getHobbyist(int id) 
+	{
+		
+		return hobbyistDAO.getHobbyist(id);
+	}
+
+	@Override
+	@Transactional
+	public void removeHobbyist(int id) 
+	{
+		hobbyistDAO.removeHobbyist(id);
 	}
 
 }
