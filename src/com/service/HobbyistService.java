@@ -13,4 +13,8 @@ public interface HobbyistService
 	public Hobbyist getHobbyist(int id);
 
 	public void removeHobbyist(int id);
+
+
+	public List<Hobbyist> getHobbyistsByOption(String option);
+	
 }

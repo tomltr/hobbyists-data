@@ -47,4 +47,13 @@ public class HobbyistServiceImpl implements HobbyistService
 		hobbyistDAO.removeHobbyist(id);
 	}
 
+
+	@Override
+	@Transactional
+	public List<Hobbyist> getHobbyistsByOption(String option) 
+	{
+		
+		return hobbyistDAO.getHobbyistsByOption(option);
+	}
+
 }
