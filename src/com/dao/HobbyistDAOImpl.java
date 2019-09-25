@@ -42,7 +42,6 @@ public class HobbyistDAOImpl implements HobbyistDAO
 		
 		// save new hobbyist
 		currentSession.saveOrUpdate(newHobbyist);
-		
 	}
 
 	@Override
@@ -50,7 +49,6 @@ public class HobbyistDAOImpl implements HobbyistDAO
 	{
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		
 		
 		// now retrieve/read from database using the primary key
 		Hobbyist hobbyist = currentSession.get(Hobbyist.class, id);
@@ -69,7 +67,44 @@ public class HobbyistDAOImpl implements HobbyistDAO
 		theQuery.setParameter("hobbyistId", id);
 		
 		theQuery.executeUpdate();
+	}
+
+//	@Override
+//	public List<Hobbyist> getHobbyistsByName() 
+//	{
+//		// get the current hibernate session
+//		Session currentSession = sessionFactory.getCurrentSession();
+//		
+//		// create a query
+//		Query<Hobbyist> theQuery = currentSession.createQuery("FROM Hobbyist order by name asc", Hobbyist.class);
+//		
+//		// execute query and get result list order by name
+//		List<Hobbyist> theHobbyists = theQuery.getResultList();
+//		
+//		return theHobbyists;
+//	}
+
 	
+
+	@Override
+	public List<Hobbyist> getHobbyistsByOption(String option) 
+	{
+		
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// Create a query String using StringBuilder
+		StringBuilder queryString = new StringBuilder("FROM Hobbyist order by ");
+		queryString.append(option);
+		queryString.append(" asc");
+				
+		// create a query
+		Query<Hobbyist> theQuery = currentSession.createQuery(queryString.toString(), Hobbyist.class);
+				
+		// execute query and get result list order by name
+		List<Hobbyist> theHobbyists = theQuery.getResultList();
+				
+		return theHobbyists;
 	}
 
 }
