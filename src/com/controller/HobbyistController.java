@@ -15,7 +15,7 @@ import com.entity.Hobbyist;
 import com.service.HobbyistService;
 
 @Controller
-@RequestMapping("/hobbyist")
+@RequestMapping("/hobbyists")
 public class HobbyistController 
 {
 	
@@ -35,6 +35,16 @@ public class HobbyistController
 		return "list-hobbyists";
 	}
 	
+	@GetMapping("/sort")
+	public String sortByOption(@RequestParam("option") String option, Model model)
+	{
+		System.out.println("Option: " + option);
+		List<Hobbyist> theHobbyists = hobbyistService.getHobbyistsByOption(option);
+		model.addAttribute("hobbyists", theHobbyists);
+		
+		return "list-hobbyists";
+	}
+	
 	@GetMapping("/addForm")
 	public String addForm(Model model)
 	{
@@ -49,7 +59,7 @@ public class HobbyistController
 	{
 		hobbyistService.saveHobbyist(newHobbyist);
 		
-		return "redirect:/hobbyist/list";
+		return "redirect:/hobbyists/list";
 	}
 	
 	@GetMapping("/updateForm")
@@ -71,7 +81,7 @@ public class HobbyistController
 	{
 		hobbyistService.removeHobbyist(id);
 		
-		return "redirect:/hobbyist/list";
+		return "redirect:/hobbyists/list";
 		
 	}
 }
