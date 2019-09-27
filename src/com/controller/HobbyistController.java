@@ -84,4 +84,14 @@ public class HobbyistController
 		return "redirect:/hobbyists/list";
 		
 	}
+	
+	@GetMapping("/search")
+	public String search(@RequestParam("keyword") String keyword, Model model)
+	{
+		
+		
+		List<Hobbyist> resultHobbyists = hobbyistService.search(keyword);
+		model.addAttribute("hobbyists", resultHobbyists);
+		return "list-hobbyists";
+	}
 }
