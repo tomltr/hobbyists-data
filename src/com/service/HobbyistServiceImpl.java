@@ -56,4 +56,12 @@ public class HobbyistServiceImpl implements HobbyistService
 		return hobbyistDAO.getHobbyistsByOption(option);
 	}
 
+	@Override
+	@Transactional
+	public List<Hobbyist> search(String keyword) 
+	{
+		return hobbyistDAO.search(keyword);
+		
+	}
+
 }

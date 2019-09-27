@@ -16,5 +16,7 @@ public interface HobbyistService
 
 
 	public List<Hobbyist> getHobbyistsByOption(String option);
+
+	public List<Hobbyist> search(String keyword);
 	
 }
