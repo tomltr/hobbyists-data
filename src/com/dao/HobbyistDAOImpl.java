@@ -69,21 +69,6 @@ public class HobbyistDAOImpl implements HobbyistDAO
 		theQuery.executeUpdate();
 	}
 
-//	@Override
-//	public List<Hobbyist> getHobbyistsByName() 
-//	{
-//		// get the current hibernate session
-//		Session currentSession = sessionFactory.getCurrentSession();
-//		
-//		// create a query
-//		Query<Hobbyist> theQuery = currentSession.createQuery("FROM Hobbyist order by name asc", Hobbyist.class);
-//		
-//		// execute query and get result list order by name
-//		List<Hobbyist> theHobbyists = theQuery.getResultList();
-//		
-//		return theHobbyists;
-//	}
-
 	
 
 	@Override
@@ -97,13 +82,43 @@ public class HobbyistDAOImpl implements HobbyistDAO
 		StringBuilder queryString = new StringBuilder("FROM Hobbyist order by ");
 		queryString.append(option);
 		queryString.append(" asc");
+		String query = queryString.toString();
 				
 		// create a query
-		Query<Hobbyist> theQuery = currentSession.createQuery(queryString.toString(), Hobbyist.class);
+		Query<Hobbyist> theQuery = currentSession.createQuery(query, Hobbyist.class);
 				
 		// execute query and get result list order by name
 		List<Hobbyist> theHobbyists = theQuery.getResultList();
+		
+		queryString = null;
 				
+		return theHobbyists;
+	}
+
+	@Override
+	public List<Hobbyist> search(String keyword) 
+	{
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		StringBuilder queryStringBuilder = new StringBuilder("FROM Hobbyist WHERE name LIKE '%");
+		queryStringBuilder.append(keyword);
+		queryStringBuilder.append("%' or email LIKE '%");
+		queryStringBuilder.append(keyword);
+		queryStringBuilder.append("%' or hobby LIKE '%");
+		queryStringBuilder.append(keyword);
+		queryStringBuilder.append("%' or favorite_site LIKE '%");
+		queryStringBuilder.append(keyword);
+		queryStringBuilder.append("%'");
+		String query = queryStringBuilder.toString();
+		
+		Query<Hobbyist> theQuery = currentSession.createQuery(query, Hobbyist.class);
+		
+		List<Hobbyist> theHobbyists = theQuery.getResultList();
+		
+		queryStringBuilder = null;
+		
+		
+		
 		return theHobbyists;
 	}
 

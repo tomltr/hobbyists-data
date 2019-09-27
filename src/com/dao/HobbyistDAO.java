@@ -15,4 +15,6 @@ public interface HobbyistDAO
 	public void removeHobbyist(int id);
 
 	public List<Hobbyist> getHobbyistsByOption(String option);
+
+	public List<Hobbyist> search(String keyword);
 }
