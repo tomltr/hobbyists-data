@@ -14,14 +14,9 @@
 		
 		<div class="container text-center">
 			
-				
 				<h2>Hobbyists Data</h2>
 				<br/>
 				<!--  Search field -->
-				
-		
-				
-				
 					<form method="get" action="search" class="form-inline">
 						
 							<input class="form-control form-control-lg col-sm-10" type="text" name="keyword" />
@@ -31,43 +26,35 @@
 							</div>
 					
 					</form>
-			
-			
-				
 				<br/>
-				
 			
-				
-				
 				<!--  Sorting Links -->
-				
 				 <c:url var="sortByName" value="/hobbyists/sort" >
 				 	<c:param name="option" value="name"/>
 
 				 </c:url>
 				 
-				  <c:url var="sortByEmail" value="/hobbyists/sort" >
+				 <c:url var="sortByEmail" value="/hobbyists/sort" >
 				 	<c:param name="option" value="email" />
 				 </c:url>
 				 
-				  <c:url var="sortByHobby" value="/hobbyists/sort" >
+				 <c:url var="sortByHobby" value="/hobbyists/sort" >
 				 	<c:param name="option" value="hobby" />
 				 </c:url>
 				 
-				  <c:url var="sortByFavoriteSite" value="/hobbyists/sort" >
+				 <c:url var="sortByFavoriteSite" value="/hobbyists/sort" >
 				 	<c:param name="option" value="favoriteSite" />
 				 </c:url>
 
 				 
-				  <c:url var="sortByHasPet" value="/hobbyists/sort" >
+				 <c:url var="sortByHasPet" value="/hobbyists/sort" >
 				 	<c:param name="option" value="hasPet" />
 				 </c:url>
 				 
-				  <c:url var="sortByJoinedDate" value="/hobbyists/sort" >
+				 <c:url var="sortByJoinedDate" value="/hobbyists/sort" >
 				 	<c:param name="option" value="joinedDate" />
 				 </c:url>
 				 
-			
 				<!--  add out html table here -->
 				<table class="table table-hover">
 					<thead class="thead-dark">
@@ -88,14 +75,11 @@
 								<!--  Refresh Button -->
 								<a class="btn btn-secondary" href="list">Refresh</a>
 							</th>
-						
 							
 						</tr>
 					</thead>
 					
 					<!--  loop over each hobbyists -->
-					
-					
 						<c:forEach var="tempHobbyist" items="${hobbyists}">
 						
 							<!--  update link with hobbyist id -->
@@ -134,16 +118,16 @@
 		</div>
 		
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
-crossorigin="anonymous"></script>
+						integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+						crossorigin="anonymous"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" 
-integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" 
-crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" 
+						integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" 
+						crossorigin="anonymous"></script>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" 
-integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" 
-crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" 
+						integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" 
+						crossorigin="anonymous"></script>
 		
 	</body>
 	
