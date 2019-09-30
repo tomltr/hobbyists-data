@@ -8,4 +8,5 @@ Software Requirements:
 
 3. MySQL Server 5.7
 
-4. Other files will be in Lib Folder.
+4. Other files will be in lib Folder (path: WebContent/WEB-INF/lib/)
+
