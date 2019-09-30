@@ -36,7 +36,6 @@ public class HobbyistServiceImpl implements HobbyistService
 	@Transactional
 	public Hobbyist getHobbyist(int id) 
 	{
-		
 		return hobbyistDAO.getHobbyist(id);
 	}
 
@@ -52,7 +51,6 @@ public class HobbyistServiceImpl implements HobbyistService
 	@Transactional
 	public List<Hobbyist> getHobbyistsByOption(String option) 
 	{
-		
 		return hobbyistDAO.getHobbyistsByOption(option);
 	}
 
@@ -61,7 +59,6 @@ public class HobbyistServiceImpl implements HobbyistService
 	public List<Hobbyist> search(String keyword) 
 	{
 		return hobbyistDAO.search(keyword);
-		
 	}
 
 }
