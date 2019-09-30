@@ -6,38 +6,38 @@
 
 	<head>
 		<title>List Hobbyists</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
 	</head>
 	
 	<body>
-	
-		<div id="wrapper">
-			<div id="header">
-				<h2>HRM - Hobby Relationship Manager</h2>
-			</div>
-		</div>
 		
-		<div id="container">
-		
-			<div id="content">
-				
+		<div class="container text-center">
 			
+				
+				<h2>Hobbyists Data</h2>
+				<br/>
 				<!--  Search field -->
-				<form method="get" action="search">
-					<input type="text" name="keyword" />
-					<input type="submit" value="Search" />
-				</form>
+				
+		
+				
+				
+					<form method="get" action="search" class="form-inline">
+						
+							<input class="form-control form-control-lg col-sm-10" type="text" name="keyword" />
+						
+							<div class="col-sm-2">
+								<input class="btn btn-info " type="submit" value="Search" />
+							</div>
+					
+					</form>
+			
+			
+				
+				<br/>
 				
 			
-				<!--  New Hobbyist Button -->
-				<input type="button" value="New Hobbyist" 
-						onclick="window.location.href='addForm'; return false;"
-						class="add-button"
-				/>
 				
-				<!--  Refresh Button -->
-				<input type="button" value="Refresh"
-						onclick="window.location.href='/hobbyists-data/hobbyists/list'"
-				/>
 				
 				<!--  Sorting Links -->
 				
@@ -69,54 +69,81 @@
 				 
 			
 				<!--  add out html table here -->
-				<table>
-					<tr>
-					
-						<th><a href="${sortByName}">Name</a> </th>
-						<th><a href="${sortByEmail}">Email</a> </th>
-						<th><a href="${sortByHobby}">Hobby</a> </th>
-						<th><a href="${sortByFavoriteSite}">Favorite Site</a> </th>
-						<th><a href="${sortByHasPet}">Has Pet</a> </th>
-						<th><a href="${sortByJoinedDate}">Joined Date</a> </th>
-					
+				<table class="table table-hover">
+					<thead class="thead-dark">
+						<tr>
 						
-					</tr>
+							<th scope="col"><a href="${sortByName}">Name</a> </th>
+							<th scope="col"><a href="${sortByEmail}">Email</a> </th>
+							<th scope="col"><a href="${sortByHobby}">Hobby</a> </th>
+							<th scope="col"><a href="${sortByFavoriteSite}">Site</a> </th>
+							<th scope="col"><a href="${sortByHasPet}">Pet</a> </th>
+							<th scope="col"><a href="${sortByJoinedDate}">Joined Date</a> </th>
+							<th scope="col">
+								<!--  New Hobbyist Button -->
+								<a class="btn btn-primary" href="addForm">New</a>
+							</th>
+					
+							<th scope="col">
+								<!--  Refresh Button -->
+								<a class="btn btn-secondary" href="list">Refresh</a>
+							</th>
+						
+							
+						</tr>
+					</thead>
 					
 					<!--  loop over each hobbyists -->
 					
-					<c:forEach var="tempHobbyist" items="${hobbyists}">
 					
-						<!--  update link with hobbyist id -->
-						<c:url var="updateLink" value="/hobbyists/updateForm">
-							<c:param name="hobbyistId" value="${tempHobbyist.id}"/>
+						<c:forEach var="tempHobbyist" items="${hobbyists}">
 						
-						</c:url>
-						
-						<c:url var="removeLink" value="/hobbyists/remove">
-							<c:param name="hobbyistId" value="${tempHobbyist.id}"/>
-						
-						</c:url>
-						
-						<tr>
-							<td>${tempHobbyist.name}</td>
-							<td>${tempHobbyist.email}</td>
-							<td>${tempHobbyist.hobby}</td>
-							<td><a href="${tempHobbyist.url}">${tempHobbyist.favoriteSite}</a></td>
-							<td>${tempHobbyist.hasPet}</td>
-							<td>${tempHobbyist.joinedDate}</td>
-							<td>
-								<a href="${updateLink}">Update</a> |
-								<a href="${removeLink}"
-									onclick="if(!(confirm('Remove the hobbyist?'))) return false">Remove
-								</a>
-							</td>
-						</tr>
-					</c:forEach>
+							<!--  update link with hobbyist id -->
+							<c:url var="updateLink" value="/hobbyists/updateForm">
+								<c:param name="hobbyistId" value="${tempHobbyist.id}"/>
+							
+							</c:url>
+							
+							<c:url var="removeLink" value="/hobbyists/remove">
+								<c:param name="hobbyistId" value="${tempHobbyist.id}"/>
+							
+							</c:url>
+							
+							<tr>
+								<td>${tempHobbyist.name}</td>
+								<td>${tempHobbyist.email}</td>
+								<td>${tempHobbyist.hobby}</td>
+								<td><a href="${tempHobbyist.url}">${tempHobbyist.favoriteSite}</a></td>
+								<td>${tempHobbyist.hasPet}</td>
+								<td>${tempHobbyist.joinedDate}</td>
+								<td>
+									<a class="btn btn-success" href="${updateLink}">Update</a> 
+								</td>
+								
+								<td>
+									<a  class="btn btn-danger" href="${removeLink}"
+										onclick="if(!(confirm('Remove the hobbyist?'))) return false">Remove
+									</a>
+								</td>
+							</tr>
+						</c:forEach>
+					
 
 				</table>
-			</div>
 			
 		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" 
+integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" 
+crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" 
+integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" 
+crossorigin="anonymous"></script>
 		
 	</body>
 	
