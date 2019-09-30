@@ -112,8 +112,10 @@ public class HobbyistDAOImpl implements HobbyistDAO
 	@Override
 	public List<Hobbyist> search(String keyword) 
 	{
+		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
+		// create a query String using StringBuilder
 		StringBuilder queryStringBuilder = new StringBuilder("FROM Hobbyist WHERE name LIKE '%");
 		queryStringBuilder.append(keyword);
 		queryStringBuilder.append("%' or email LIKE '%");
@@ -125,14 +127,11 @@ public class HobbyistDAOImpl implements HobbyistDAO
 		queryStringBuilder.append("%'");
 		String query = queryStringBuilder.toString();
 		
+		// get new hobbyists list using currentSession createQuery
 		Query<Hobbyist> theQuery = currentSession.createQuery(query, Hobbyist.class);
-		
 		List<Hobbyist> theHobbyists = theQuery.getResultList();
 		
 		queryStringBuilder = null;
-		
-		
-		
 		return theHobbyists;
 	}
 
