@@ -29,5 +29,21 @@ Overview:
 
 ![Alt Text](screenshots/overview.png)
 
+Sort by Name:
+
+![Alt Text](screenshots/sortByName.png)
+
+Sort by Joined Date:
+
+![Alt Text](screenshots/sortByJoinedDate.png)
+
+Before Search:
+
+![Alt Text](screenshots/beforeSearching.png)
+
+After Search:
+
+![Alt Text](screenshots/afterSearching.png)
+
 
 
