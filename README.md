@@ -23,4 +23,9 @@ Software Requirements:
 5. Joined Dates are automatically generated when users create a new hobbyist.
 
 
+# Screenshots
+
+Overview:
+
+![alt text](http://hobbyists-data/screenshots/overview.png)
 
