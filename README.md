@@ -12,13 +12,15 @@ Software Requirements:
 
 # Features:
 
-1. CRUD application built using Spring and Hibernate on the backend
+1. CRUD application built using Spring and Hibernate on the backend.
 
-2. User Interface built using Bootstrap 4
+2. User Interface built using Bootstrap 4.
 
-3. Searching will match a keyword on name, email, hobby and favorite site columns.
+3. Displaying ascending order when users choose to click on any header columns.
 
-4. Joined Date are automatically generated when user create new hobbyist.
+4. Searching will match a keyword on name, email, hobby and favorite site columns.
+
+5. Joined Date are automatically generated when users create a new hobbyist.
 
 
 
