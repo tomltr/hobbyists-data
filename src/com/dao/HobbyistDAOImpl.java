@@ -1,5 +1,7 @@
 package com.dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -40,8 +42,20 @@ public class HobbyistDAOImpl implements HobbyistDAO
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		// save new hobbyist
-		currentSession.saveOrUpdate(newHobbyist);
+		// update if hobbyist already existed
+		if(newHobbyist.getId() > 0)
+		{
+			currentSession.update(newHobbyist);
+		}
+		// save if new hobbyist
+		else
+		{
+			Date today = new Date();
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			String joinedDate = formatter.format(today);
+			newHobbyist.setJoinedDate(joinedDate);
+			currentSession.save(newHobbyist);
+		}
 	}
 
 	@Override
