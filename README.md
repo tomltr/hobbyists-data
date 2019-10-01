@@ -20,7 +20,6 @@ Software Requirements:
 
 4. Searching will match a keyword on name, email, hobby and favorite site columns.
 
-5. Joined Dates are automatically generated when users create a new hobbyist.
 
 
 # Screenshots
