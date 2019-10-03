@@ -1,9 +1,8 @@
 CREATE DATABASE hobbyists_data;
 
-
 use hobbyists_data;
 
-  CREATE TABLE hobbyist
+ CREATE TABLE hobbyist
  (
   	`id` int(11) auto_increment not null,
 	`name` varchar(50) not null,
@@ -15,16 +14,6 @@ use hobbyists_data;
 	`joined_date` date,
     primary key(`id`)
   );
-  
-  
-
-
-
-
-
-
-
-
 
 INSERT INTO hobbyist (name, email, hobby, favorite_site, url, has_pet, joined_date) VALUES('Gimli', 'gimli@moria.com', 'Killing Goblins', 'Lego Lord of The Rings', 'https://lego-lord-of-the-rings.fandom.com/wiki/Gimli', 'No', '2019-09-27');
 
