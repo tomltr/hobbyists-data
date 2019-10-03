@@ -9,10 +9,10 @@ use hobbyists_data;
 	`email` varchar(50) not null,
 	`hobby` varchar(50) not null,
 	`favorite_site` varchar(50) not null,
-	`url` varchar(100),
-	`has_pet` enum('Yes', 'No'),
-	`joined_date` date,
-    primary key(`id`)
+	`url` varchar(100) not null,
+	`has_pet` enum('Yes', 'No') not null,
+	`joined_date` date not null,
+    	primary key(`id`)
   );
 
 INSERT INTO hobbyist (name, email, hobby, favorite_site, url, has_pet, joined_date) VALUES('Gimli', 'gimli@moria.com', 'Killing Goblins', 'Lego Lord of The Rings', 'https://lego-lord-of-the-rings.fandom.com/wiki/Gimli', 'No', '2019-09-27');
